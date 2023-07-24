@@ -5,7 +5,7 @@
 
 /**
  * **_arg_parser - Parse user input and tokenize it.
- *
+ * @lineptr: A pointer to the text buffer.
  * Return: a Pointer to an array of pointers to args.
  */
 

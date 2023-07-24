@@ -1,21 +1,26 @@
 #include "main.h"
 #include <string.h>
+
 /**
  * main - Entry point to simple shell program.
  * @ac: Number of commandline arguments passed
- * @argv: A pointer to strings of arguments passed.
+ * @av: A pointer to strings of arguments passed.
+ * @ep: Pointer to system environment array.
  *
  * Return: Always 0 (Success)
  */
 
-int main(int ac __attribute__((unused)), char *argv[] __attribute__((unused)))
+int main(int ac, char *av[], char *ep[])
 {
-	int mode = 1, len = 0;
+	size_t n = 0;
+	int len, mode = 1;
 	char **args;
 	char *line = NULL;
 	ssize_t bytes_read;
-	size_t n = 0;
 
+	(void)ac;
+	(void)av;
+	(void)ep;
 	while (mode)
 	{
 		mode = isatty(STDIN_FILENO);
@@ -39,14 +44,9 @@ int main(int ac __attribute__((unused)), char *argv[] __attribute__((unused)))
 		}
 		args = _arg_parser(line);
 		if (access(args[0], F_OK) == 0)
-		{
 			start_process(args);
-		}
 		else
-		{
 			perror("access");
-		}
-		
 		for (len = 0; args[len] != NULL; len++)
 		{
 			free(args[len]);

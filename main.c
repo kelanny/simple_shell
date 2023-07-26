@@ -52,7 +52,10 @@ int main(int ac, char *av[], char *ep[])
 			start_process(args);
 		}
 		else
+		{
 			perror("access");
+			exit(0);
+		}
 		for (len = 0; args[len] != NULL; len++)
 		{
 			free(args[len]);

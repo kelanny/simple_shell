@@ -8,4 +8,5 @@
 
 char **_arg_parser(char *lineptr);
 void start_process(char **args);
+void parse_path(char **env, char *cmd);
 #endif

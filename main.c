@@ -43,8 +43,14 @@ int main(int ac, char *av[], char *ep[])
 			}
 		}
 		args = _arg_parser(line);
-		if (access(args[0], F_OK) == 0)
+		if (strcmp(args[0], "exit") == 0)
+		{
+			exit(0);
+		}
+		else if (access(args[0], F_OK) == 0)
+		{
 			start_process(args);
+		}
 		else
 			perror("access");
 		for (len = 0; args[len] != NULL; len++)
